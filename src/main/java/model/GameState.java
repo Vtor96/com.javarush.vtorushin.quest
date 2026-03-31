@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameState {
-    private static final String DEFAULT_PLAYER_NAME = "Аноним";
     private String playerName;
     private String currentStepId;
     private boolean isGameFinished;
@@ -37,10 +36,6 @@ public class GameState {
 
     public void setCurrentStepId(String currentStepId) {
         this.currentStepId = currentStepId;
-    }
-
-    public boolean isGameFinished() {
-        return this.isGameFinished;
     }
 
     public void setGameFinished(boolean finished) {
@@ -84,5 +79,9 @@ public class GameState {
 
     private String resolvePlayerName() {
         return this.playerName != null && !this.playerName.trim().isEmpty() ? this.playerName : "Аноним";
+    }
+
+    public boolean isGameFinished() {
+        return isGameFinished;
     }
 }

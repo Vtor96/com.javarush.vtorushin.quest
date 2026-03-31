@@ -8,19 +8,19 @@ public class GameStatistics {
     private final Map<String, Integer> losses = new HashMap();
 
     public void recordWin(String playerName) {
-        this.wins.put(playerName, (Integer) this.wins.getOrDefault(playerName, 0) + 1);
+        this.wins.put(playerName, this.wins.getOrDefault(playerName, 0) + 1);
     }
 
     public void recordLoss(String playerName) {
-        this.losses.put(playerName, (Integer) this.losses.getOrDefault(playerName, 0) + 1);
+        this.losses.put(playerName, this.losses.getOrDefault(playerName, 0) + 1);
     }
 
     public int getWins(String playerName) {
-        return (Integer) this.wins.getOrDefault(playerName, 0);
+        return this.wins.getOrDefault(playerName, 0);
     }
 
     public int getLosses(String playerName) {
-        return (Integer) this.losses.getOrDefault(playerName, 0);
+        return this.losses.getOrDefault(playerName, 0);
     }
 
     public double getWinRate(String playerName) {
