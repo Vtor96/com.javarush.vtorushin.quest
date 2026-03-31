@@ -39,7 +39,7 @@ public class QuestTree {
     }
 
     public QuestStep getStep(String stepId) {
-        return (QuestStep) this.steps.get(stepId);
+        return this.steps.get(stepId);
     }
 
     public boolean hasStep(String stepId) {

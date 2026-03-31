@@ -28,8 +28,8 @@ public class QuestFlowTest {
         GameState state = new GameState();
         state.setPlayerName("Player");
         Assert.assertTrue(this.playPathAndUpdate(state, tree, "path_left", "cave_enter", "treasure"));
-        Assert.assertEquals(1L, (long) state.getTotalWins());
-        Assert.assertEquals(0L, (long) state.getTotalLosses());
+        Assert.assertEquals(1L, state.getTotalWins());
+        Assert.assertEquals(0L, state.getTotalLosses());
     }
 
     @Test
@@ -38,8 +38,8 @@ public class QuestFlowTest {
         GameState state = new GameState();
         state.setPlayerName("Player");
         Assert.assertFalse(this.playPathAndUpdate(state, tree, "path_left", "cave_enter", "no_treasure"));
-        Assert.assertEquals(0L, (long) state.getTotalWins());
-        Assert.assertEquals(1L, (long) state.getTotalLosses());
+        Assert.assertEquals(0L, state.getTotalWins());
+        Assert.assertEquals(1L, state.getTotalLosses());
     }
 
     @Test
@@ -48,8 +48,8 @@ public class QuestFlowTest {
         GameState state = new GameState();
         state.setPlayerName("Player");
         Assert.assertTrue(this.playPathAndUpdate(state, tree, "path_right", "help"));
-        Assert.assertEquals(1L, (long) state.getTotalWins());
-        Assert.assertEquals(0L, (long) state.getTotalLosses());
+        Assert.assertEquals(1L, state.getTotalWins());
+        Assert.assertEquals(0L, state.getTotalLosses());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class QuestFlowTest {
         GameState state = new GameState();
         state.setPlayerName("Player");
         Assert.assertFalse(this.playPathAndUpdate(state, tree, "path_right", "ignore"));
-        Assert.assertEquals(0L, (long) state.getTotalWins());
-        Assert.assertEquals(1L, (long) state.getTotalLosses());
+        Assert.assertEquals(0L, state.getTotalWins());
+        Assert.assertEquals(1L, state.getTotalLosses());
     }
 }

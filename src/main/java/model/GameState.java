@@ -62,6 +62,10 @@ public class GameState {
         return this.statistics.getWinRate(this.resolvePlayerName());
     }
 
+    public boolean isGameFinished() {
+        return isGameFinished;
+    }
+
     public void reset() {
         this.currentStepId = "start";
         this.choices.clear();
@@ -79,9 +83,5 @@ public class GameState {
 
     private String resolvePlayerName() {
         return this.playerName != null && !this.playerName.trim().isEmpty() ? this.playerName : "Аноним";
-    }
-
-    public boolean isGameFinished() {
-        return isGameFinished;
     }
 }

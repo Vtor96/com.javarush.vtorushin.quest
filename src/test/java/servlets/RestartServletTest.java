@@ -18,18 +18,18 @@ public class RestartServletTest {
         state.setCurrentStepId("help");
         state.setGameFinished(true);
         state.addChoice("help", "ignore");
-        HttpSession session = (HttpSession) Mockito.mock(HttpSession.class);
+        HttpSession session = Mockito.mock(HttpSession.class);
         Mockito.when(session.getAttribute("gameState")).thenReturn(state);
-        HttpServletRequest request = (HttpServletRequest) Mockito.mock(HttpServletRequest.class);
+        HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         Mockito.when(request.getSession()).thenReturn(session);
         Mockito.when(request.getContextPath()).thenReturn("/quest");
-        HttpServletResponse response = (HttpServletResponse) Mockito.mock(HttpServletResponse.class);
+        HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
         RestartServlet servlet = new RestartServlet();
         servlet.doGet(request, response);
-        ((HttpSession) Mockito.verify(session)).setAttribute("gameState", state);
-        ((HttpServletResponse) Mockito.verify(response)).sendRedirect("/quest/game");
-        Assert.assertEquals(1L, (long) state.getTotalWins());
-        Assert.assertEquals(0L, (long) state.getTotalLosses());
+        (Mockito.verify(session)).setAttribute("gameState", state);
+        (Mockito.verify(response)).sendRedirect("/quest/game");
+        Assert.assertEquals(1L, state.getTotalWins());
+        Assert.assertEquals(0L, state.getTotalLosses());
         Assert.assertEquals("start", state.getCurrentStepId());
         Assert.assertFalse(state.isGameFinished());
         Assert.assertTrue(state.getChoices().isEmpty());
@@ -37,14 +37,14 @@ public class RestartServletTest {
 
     @Test
     public void restartWithNullGameStateShouldNotCrash() throws Exception {
-        HttpSession session = (HttpSession) Mockito.mock(HttpSession.class);
-        Mockito.when(session.getAttribute("gameState")).thenReturn((Object) null);
-        HttpServletRequest request = (HttpServletRequest) Mockito.mock(HttpServletRequest.class);
+        HttpSession session = Mockito.mock(HttpSession.class);
+        Mockito.when(session.getAttribute("gameState")).thenReturn(null);
+        HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         Mockito.when(request.getSession()).thenReturn(session);
         Mockito.when(request.getContextPath()).thenReturn("/quest");
-        HttpServletResponse response = (HttpServletResponse) Mockito.mock(HttpServletResponse.class);
+        HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
         RestartServlet servlet = new RestartServlet();
         servlet.doGet(request, response);
-        ((HttpServletResponse) Mockito.verify(response)).sendRedirect("/quest/game");
+        (Mockito.verify(response)).sendRedirect("/quest/game");
     }
 }

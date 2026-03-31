@@ -20,7 +20,7 @@ public class WelcomeServlet extends HttpServlet {
         request.getRequestDispatcher("/welcome.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String playerName = request.getParameter("playerName");
